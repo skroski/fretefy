@@ -1,28 +1,42 @@
+@import '../../variables.scss';
+
 :host {
-    > ul {
-        list-style: none;
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        background-color: #636e72;
-        width: 100%;
+  >ul {
+    list-style: none;
 
-        > li {
-            > a {
-                display: inline-block;
-                appearance: none;
-                border: none;
-                background-color: #636e72;                
-                padding: 12px;
-                text-decoration: none;
-                font-weight: 600;
-                color: #fff;
-                border-bottom: 3px solid #636e72;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
-                &.active {
-                    border-bottom: 3px solid #2d3436;
-                }
-            }
-        }
+    >li.logo-fretefy {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+
+      img {
+        width: 100px;
+      }
     }
+
+    >li.menu-item {
+      >a {
+        display: inline-block;
+        appearance: none;
+        border: none;
+        background-color: white;
+        padding: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        color: $azul-escuro;
+        border-bottom: 3px solid $azul-escuro;
+
+        &.active {
+          border-bottom: 3px solid $azul-escuro;
+        }
+      }
+    }
+  }
 }

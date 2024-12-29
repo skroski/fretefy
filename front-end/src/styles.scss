@@ -1,10 +1,116 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
 * {
-    font-family: Nunito Sans,Segoe UI,Helvetica Neue,Arial,sans-serif;
+  font-family: Manrope, Arial, sans-serif;
 }
 
-html, body {
-    padding: 0;
-    margin: 0;
-    background-color: #dfe6e9;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #dfe6e9;
+  font-family: Manrope, Arial, sans-serif;
+}
+
+.container {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.content {
+  width: 750px;
+  max-width: 750px
+}
+
+$azul-mais-claro: hsl(216 60% 90%);
+$azul-claro: hsl(216 60% 80%);
+$azul-medio: hsl(216, 80%, 70%);
+$azul-escuro: hsl(216, 80%, 20%);
+$azul-mais-escuro: hsl(216, 80%, 20%);
+$azul-hover: hsl(216, 80%, 40%);
+$cinza-mais-claro: hsl(208, 15%, 90%);
+$cinza-claro: hsl(208, 15%, 80%);
+$cinza-medio: hsl(208, 15%, 60%);
+$cinza-escuro: hsl(208, 15%, 40%);
+
+$verde-mais-claro: hsl(180, 50%, 90%);
+$verde-claro: hsl(180, 50%, 70%);
+$verde: hsl(180, 70%, 50%);
+$verde-escuro: hsl(180, 90%, 30%);
+$verde-mais-escuro: hsl(180, 90%, 20%);
+
+
+h1 {
+  color: $azul-escuro;
+  letter-spacing: -1.5px;
+  text-indent: -2px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 64px
+}
+
+h2 {
+  color: $azul-escuro;
+  letter-spacing: -1.5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 32px;
+  line-height: 46px
+}
+
+h3 {
+  color: $verde-mais-escuro;
+  letter-spacing: -1px;
+  text-indent: -1px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 28px;
+  line-height: 36px
+}
+
+h4 {
+  color: $azul-escuro;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 30px
+}
+
+h5 {
+  color: $azul-escuro;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  line-height: 16px
+}
+
+h6 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 14px
+}
+
+p {
+  letter-spacing: -.1px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px
+}
+
+a {
+  color: $verde;
+  cursor: pointer;
+  text-decoration: underline
+}
+
+a:hover {
+  background-color: $verde-mais-claro
 }

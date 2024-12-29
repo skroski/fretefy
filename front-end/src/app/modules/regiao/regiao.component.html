@@ -1,3 +1,221 @@
-<p>
-  regiao works!
-</p>
+<div class="container">
+  <div class="content">
+    <button class="btn-secondary" popovertarget="popover-form">
+      <i class="bi bi-plus-circle-fill"></i> Cadastrar Região
+    </button>
+    <div popover class="popover-form-cadastro" id="popover-form">
+      <div class="header-form">
+        <h2>Cadastro de Região</h2>
+        <button
+          class="btn-rounded"
+          popovertarget="popover-form"
+          popovertargetaction="hide"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <label for="regiao">Escolha uma Região do Brasil:</label>
+      <div class="select-wrapper">
+        <select
+          [(ngModel)]="selectedRegiao"
+          (ngModelChange)="onRegiaoChange($event)"
+        >
+          <option *ngFor="let regiao of regioes$ | async" [value]="regiao.id">
+            {{ regiao.nome }}
+          </option>
+        </select>
+      </div>
+      <p>Os campos do formulário abaixo são todos obrigatórios:</p>
+      <form [formGroup]="regiaoForm" (ngSubmit)="salvarRegiao()">
+        <div class="grid-2-4">
+          <div class="form-group">
+            <label for="estadoRegiao">Estado (UF):</label>
+            <div class="select-wrapper">
+              <select
+                id="estadoRegiao"
+                formControlName="estadoRegiao"
+                (change)="onEstadoSelecionado()"
+              >
+                <option
+                  *ngFor="let estado of estados$ | async"
+                  [value]="estado.id"
+                >
+                  {{ estado.nome }}
+                </option>
+              </select>
+            </div>
+            <div
+              *ngIf="
+                regiaoForm.get('estadoRegiao')?.hasError('required') &&
+                regiaoForm.get('estadoRegiao')?.touched
+              "
+              class="erro-feedback"
+            >
+              Estado é obrigatório.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="municipioRegiao">Município da Região:</label>
+            <app-municipios
+              [formGroup]="regiaoForm"
+              [municipios]="municipios$ | async"
+              (municipioSelecionado)="onMunicipioSelecionado($event)"
+            ></app-municipios>
+
+            <div
+              *ngIf="
+                regiaoForm.get('municipioRegiao')?.hasError('nenhumaCidade') &&
+                regiaoForm.get('municipoRegiao')?.touched
+              "
+            >
+              É obrigatório informar ao menos uma cidade na região.
+            </div>
+            <div
+              *ngIf="
+                regiaoForm.get('municipioRegiao')?.hasError('required') &&
+                regiaoForm.get('nomeRegiao')?.touched
+              "
+              class="erro-feedback"
+            >
+              Município é obrigatório para adicionar uma região.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input
+            type="text"
+            id="nomeRegiao"
+            formControlName="nomeRegiao"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': regiaoForm.get('nomeRegiao')?.invalid
+            }"
+          />
+          <div
+            *ngIf="
+              regiaoForm.get('nomeRegiao')?.hasError('nomeDuplicado') &&
+              regiaoForm.get('nomeRegiao')?.touched
+            "
+            class="erro-feedback"
+          >
+            Este nome de região já está cadastrado.
+          </div>
+          <div
+            *ngIf="
+              regiaoForm.get('nomeRegiao')?.hasError('required') &&
+              regiaoForm.get('nomeRegiao')?.touched
+            "
+            class="erro-feedback"
+          >
+            Nome é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descricaoRegiao">Descrição:</label>
+          <textarea
+            id="descricaoRegiao"
+            formControlName="descricaoRegiao"
+          ></textarea>
+          <div
+            *ngIf="
+              regiaoForm.get('descricaoRegiao')?.hasError('required') &&
+              regiaoForm.get('descricaoRegiao')?.touched
+            "
+            class="erro-feedback"
+          >
+            Descrição é obrigatório.
+          </div>
+        </div>
+        <div class="form-group custom-checkbox">
+          <label for="ativa">Região Ativa:</label>
+          <input type="checkbox" id="ativa" formControlName="ativo" />
+        </div>
+        <div class="center-div">
+          <button
+            type="button"
+            (click)="salvarRegiao()"
+            class="btn btn-primary"
+            [disabled]="regiaoForm.invalid"
+          >
+            <i class="bi bi-plus-circle-fill"></i>
+            Adicionar Local
+          </button>
+        </div>
+      </form>
+      <div style="display: flex; justify-content: end">
+        <button class="btn-secondary" popovertarget="popover-form">
+          <i class="bi bi-x-lg"></i> Fechar Formulário
+        </button>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome Região</th>
+          <th>Estado</th>
+          <th>Município:</th>
+          <th>Ativo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let regiao of regioesLocal">
+          <td>{{ regiao.id }}</td>
+          <td class="nome-regiao">
+            <span class="popover-container">
+              {{ regiao.nomeRegiao }}
+              <div class="popover-content">
+                {{ regiao.descricaoRegiao }}
+              </div>
+            </span>
+          </td>
+          <td>{{ regiao.estadoNome }}</td>
+          <td>{{ regiao.municipioRegiao }}</td>
+          <td
+            [ngClass]="{
+              'status-ativo': regiao.ativo,
+              'status-inativo': !regiao.ativo
+            }"
+          >
+            {{ regiao.ativo ? "Ativo" : "Inativo" }}
+          </td>
+          <td>
+            <div class="moreoptions" popover id="moreoptions">
+              <button
+                class="btn-close"
+                popovertarget="moreoptions"
+                popovertargetaction="hide"
+              >
+                <i class="bi bi-x-lg"></i>
+              </button>
+
+              <button
+                class="btn-green"
+                popovertarget="popover-form"
+                (click)="editarRegiao(regiao)"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn-red" (click)="excluirRegiao(regiao)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+
+            <button class="button-more-options" popovertarget="moreoptions">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="center-div">
+      <button class="btn-excel" (click)="exportAsExcelFile()">
+        <i class="bi bi-filetype-xlsx"></i> Exportar para Excel
+      </button>
+    </div>
+  </div>
+</div>

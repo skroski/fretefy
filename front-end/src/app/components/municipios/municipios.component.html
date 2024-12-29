@@ -1,0 +1,11 @@
+<div class="select-wrapper">
+  <select
+    [formControl]="municipioControl"
+    [(ngModel)]="selectedMunicipio"
+    (ngModelChange)="onMunicipioChange($event)"
+  >
+    <option *ngFor="let municipio of municipios" [value]="municipio.nome">
+      {{ municipio.nome }}
+    </option>
+  </select>
+</div>

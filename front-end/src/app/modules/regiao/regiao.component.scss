@@ -1,0 +1,407 @@
+@import '../../variables.scss';
+
+:host ::ng-deep {
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: $verde-escuro;
+    font-weight: 500;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid $verde-escuro;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0px 0px 4px 0px;
+    padding: 0;
+  }
+
+  .header-form {
+    display: flex;
+    justify-content: space-between;
+    margin: -24px -24px 16px -24px;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid $verde-escuro;
+  }
+
+  form {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid $azul-mais-escuro;
+    border-radius: 5px;
+    background-color: $azul-escuro;
+
+
+
+    .form-group {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: $verde-claro;
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $azul-medio;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        &:focus {
+          border-color: $azul-escuro;
+          outline: none;
+          box-shadow: 0 0 5px rgba($azul-escuro, 0.2);
+        }
+      }
+
+      textarea {
+        height: 100px;
+        resize: vertical;
+      }
+    }
+
+    .grid-2-4 {
+      display: grid;
+      grid-template-columns: 2fr 4fr;
+      column-gap: 16px;
+    }
+
+
+  }
+
+  .btn-primary {
+    background-color: $verde-claro;
+    border-color: $verde;
+    color: $azul-escuro;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 0;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+
+    i.bi::before {
+      font-size: 1.5em;
+      position: relative;
+      right: 4px;
+
+    }
+
+    &:hover {
+      background-color: $azul-hover;
+    }
+  }
+
+  .btn-excel {
+    background-color: hsl(147, 63%, 34%);
+    border-color: $verde;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 0;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+
+    i.bi::before {
+      font-size: 1.5em;
+      position: relative;
+      right: 4px;
+
+    }
+
+    &:hover {
+      background-color: $verde-escuro;
+    }
+  }
+
+  .center-div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-secondary {
+
+    background-color: $azul-escuro;
+    border-color: $verde-escuro;
+    border: 0;
+    margin: 1rem 0;
+    color: $verde-claro;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+
+    i.bi::before {
+      font-size: 1.5em;
+      position: relative;
+      right: 6px;
+
+    }
+
+
+    &:hover {
+      background-color: $verde-escuro;
+    }
+  }
+
+  button.btn-rounded {
+    position: relative;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    cursor: pointer;
+    background-color: $verde-claro;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 5px $cinza-mais-claro;
+    background-color: white;
+
+    thead tr th {
+      padding: 12px 15px;
+      border-right: 1px solid $verde-mais-claro;
+      text-align: left;
+      border-bottom: 1px solid $verde-mais-claro;
+
+      font-weight: 600;
+      color: $verde-claro;
+      background-color: $azul-escuro;
+    }
+
+    td {
+      padding: 12px 15px;
+      text-align: left;
+      border-right: 1px solid $cinza-mais-claro;
+      border-bottom: 1px solid $verde-claro;
+
+    }
+
+    tr:nth-child(even) {
+      background-color: $verde-mais-claro;
+    }
+
+
+
+    button {
+      margin: 0 5px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.btn-close {
+        background-color: $verde-escuro;
+        color: hsl(0, 65%, 50%);
+        background-color: white;
+
+        &:hover {
+          background-color: $verde;
+        }
+      }
+
+      &.btn-green {
+        background-color: $verde-escuro;
+        color: white;
+
+        &:hover {
+          background-color: $verde;
+        }
+      }
+
+      &.btn-red {
+        background-color: hsl(4, 50%, 60%);
+        color: white;
+
+        &:hover {
+          background-color: hsl(4, 50%, 35%);
+        }
+      }
+    }
+  }
+
+  .erro-feedback {
+    color: hsl(4, 100%, 78%);
+    font-size: 12px;
+  }
+
+  .popover-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .popover-content {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    /* Posiciona acima do nome */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #405b77;
+    padding: 10px;
+    border: 1px solid #c3ced7;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .popover-container:hover .popover-content {
+    display: block;
+  }
+
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 4rem;
+  }
+
+  .custom-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: $azul-mais-claro;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "☐";
+    font-size: 2rem;
+    color: white;
+  }
+
+  .custom-checkbox input[type="checkbox"]:checked {
+    background-color: $verde;
+    border-color: $verde;
+  }
+
+  .custom-checkbox input[type="checkbox"]:hover {
+
+    border-color: 1px solid $verde-mais-claro;
+  }
+
+  .custom-checkbox input[type="checkbox"]:checked::before {
+    content: "✔";
+    color: $verde-mais-claro;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .custom-checkbox label {
+    font-size: 16px;
+    color: $azul-escuro;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .custom-checkbox input[type="checkbox"]:hover+label {
+    color: $azul-mais-claro;
+  }
+
+  .status-ativo {
+    color: hsl(164, 50%, 38%);
+    font-weight: bold;
+  }
+
+  .status-inativo {
+    color: hsl(0, 60%, 44%);
+    font-weight: bold;
+  }
+
+  .popover-form-cadastro {
+    padding: 24px;
+    border: 1px solid $verde-escuro;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  select {
+    appearance: none;
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .select-wrapper::after {
+    content: '↓';
+    position: absolute;
+    top: 35%;
+    right: 16px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    pointer-events: none;
+    color: $verde;
+  }
+
+  select:focus {
+    border-color: $verde-claro;
+    box-shadow: 0 0 5px $verde-claro;
+  }
+
+  table button.button-more-options {
+    color: $verde-mais-claro;
+    background-color: $verde-escuro;
+  }
+
+  div.moreoptions {
+    position: static;
+    background-color: $verde-mais-claro;
+    color: white;
+    border: 1px solid $verde-escuro;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+    top: -300px;
+
+  }
+
+  [popover]:-internal-popover-in-top-layer::backdrop {
+    position: aboslute;
+    background-color: hsla(0, 13%, 78%, 0.5);
+    pointer-events: none !important;
+    inset: 0px;
+  }
+}
